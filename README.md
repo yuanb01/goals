@@ -1,3 +1,3 @@
 # goals
 CLI tool to track your goals in the terminal
-Uses Cobra library to create CLI application
+Uses Cobra library and BoltDB to create CLI application

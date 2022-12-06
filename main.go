@@ -62,9 +62,9 @@ func main() {
     },
   }
 
-  cmdTimes.Flags().IntVarP(&echoTimes, "times", "t", 1, "times to echo the input")
+  // cmdTimes.Flags().IntVarP(&echoTimes, "times", "t", 1, "times to echo the input")
 
-  rootCmd.AddCommand(cmdPrint, cmdEcho)
-  cmdEcho.AddCommand(cmdTimes)
+  rootCmd.AddCommand(addCmd, doCmd, removeCmd, listCmd)
+  // cmdEcho.AddCommand(cmdTimes)
   rootCmd.Execute()
 }
