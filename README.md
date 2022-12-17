@@ -23,7 +23,7 @@ That's all you need to know to start! 🎉
 Here is a sample usage of this CLI app:
 
 $ goals
- ⚽️ 🥅 goals is a goals tracker right in your terminal!
+⚽️ 🥅 goals is a goals tracker right in your terminal!
 
 Usage:
   goals [command]
