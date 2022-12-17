@@ -1,4 +1,4 @@
-## goals ⚽️ 🥅
+## ⚽️ 🥅 goals 
 goals is a CLI tool that encourages you to set goals for youself and enables you to track these goals in the terminal. It can also be used as a habit tracker or a todo list.
 
 ## ⚡️ Quick start
@@ -23,17 +23,17 @@ That's all you need to know to start! 🎉
 Here is a sample usage of this CLI app:
 
 $ goals
-goals is a CLI for managing your goals
+ ⚽️ 🥅 goals is a goals tracker right in your terminal!
 
 Usage:
   goals [command]
 
 Available Commands:
-  add <goal-name> [repeat]  Add a new goal to your goals with optional [repeat] param
+  add <goal-name> [repeat]  Add a new goal to your goals list with optional [repeat] param
+  delete <goal-name>        Delete a goal from your goals list by its name
+  delete <goal-number>      Delete a goal from your goals list by its number in the goals list
   do <goal-name>            Mark a goal on your goals list as complete by its name
   do <goal-number>          Mark a goal on your goals list as complete by its number in the goals list
-  delete <goal-name>        Delete a goal from your goals list by its name
-  delete <goal-number>      Delete a goal from your goals list by its number
   list                      List all of your goals
 
 Use "goals [command] --help" for more information about a command.
