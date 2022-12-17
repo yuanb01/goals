@@ -36,6 +36,9 @@ Available Commands:
   do <goal-number>          Mark a goal on your goals list as complete by its number in the goals list
   list                      List all of your goals
 
+Flags:
+  -h, --help   help for goals
+
 Use "goals [command] --help" for more information about a command.
 
 $ goals add french 5
