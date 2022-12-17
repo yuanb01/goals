@@ -24,6 +24,12 @@ var addCmd = &cobra.Command{
 			}
 		}
 		goalText := strings.Join(args, " ")
+		_, strConvErr := strconv.Atoi(goalText) // goalText cannot solely be a number, otherwise will cause problems
+		if strConvErr == nil {
+			fmt.Println("Oops, your goal cannot just be a number! Try being a bit more descriptive... 💭")
+			return
+		}
+
 		goals, getGoalsErr := db.GetAllGoals()
 		if getGoalsErr != nil {
 			fmt.Println("Something went wrong:", getGoalsErr)

@@ -13,11 +13,13 @@ var doCmd = &cobra.Command{
 	Use:   "do",
 	Short: "Mark a goal on your goals list as complete either by its name or its number in the goals list",
 	Run: func(cmd *cobra.Command, args []string) {
-		var goalText string = "nil" // need to set string instead of using its 0-value in order to check line 27
+		var goalTextEntered bool
+		var goalText string
 		arg := strings.Join(args, " ")
 		id, err := strconv.Atoi(arg) // id will be 0 if a string is entered
-		if err != nil {              // referring to goal by string name
+		if err != nil {
 			goalText = arg
+			goalTextEntered = true
 		}
 		goals, getGoalsErr := db.GetAllGoals()
 		if getGoalsErr != nil {
@@ -35,7 +37,7 @@ var doCmd = &cobra.Command{
 			}
 		}
 
-		if goalText != "nil" && id <= 0 {
+		if goalTextEntered && id <= 0 {
 			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n📝 Use the 'goals list' command to see your list of goals!\n", goalText)
 			return
 		}
