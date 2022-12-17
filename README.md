@@ -57,10 +57,10 @@ You have the following goals:
 1. french 5
 
 $ goals do 1
-You are making progress towards your "french" goal! You need to do this goal 4 more times.
+You are making progress towards your "french" goal! You need to do this goal 4 more times 🔁
 
 $ goals do french
-You are making progress towards your "french" goal! You need to do this goal 3 more times.
+You are making progress towards your "french" goal! You need to do this goal 3 more times 🔁
 
 $ goals list
 You have the following goals:
