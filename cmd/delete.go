@@ -41,7 +41,7 @@ var deleteCmd = &cobra.Command{
 		if deleteErr != nil {
 			fmt.Printf("Failed to delete your goal \"%s\". Error: %s\n", goal.Text, err)
 		} else {
-			fmt.Printf("Deleted goal \"%s\" \n", goal.Text)
+			fmt.Printf("Deleted goal \"%s\" 🗑\n", goal.Text)
 		}
 	},
 }

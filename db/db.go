@@ -99,10 +99,6 @@ func UpdateGoal(id int, goalText string, repeat int) error {
 	})
 
 	return err
-	// if err != nil {
-	// 	return -1, err
-	// }
-	// return id, nil
 }
 
 // itob returns an 8-byte big endian representation of v.

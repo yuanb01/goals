@@ -11,7 +11,6 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List all of your goals.",
 	Run: func(cmd *cobra.Command, args []string) {
-		// db.DeleteGoal(4) // debugging a problem
 		goals, err := db.GetAllGoals()
 		if err != nil {
 			fmt.Println("Something went wrong:", err)
