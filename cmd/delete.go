@@ -16,7 +16,7 @@ var deleteCmd = &cobra.Command{
 		var goalText string
 		arg := strings.Join(args, " ")
 		id, err := strconv.Atoi(arg) // id will be 0 if a string is entered
-		if err != nil { // referring to goal by string name
+		if err != nil {              // referring to goal by string name
 			goalText = arg
 		}
 		goals, getGoalsErr := db.GetAllGoals()
