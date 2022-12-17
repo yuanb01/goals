@@ -32,10 +32,15 @@ var deleteCmd = &cobra.Command{
 			}
 		}
 
-		if id <= 0 || id > len(goals) {
-			fmt.Printf("Uh oh! There is no goal at number %d in your goals list 🧐\n", id)
+		if id <= 0 {
+			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n", goalText)
 			return
 		}
+		if id > len(goals) {
+			fmt.Printf("Uh oh! Did you make a typo? There is no goal at #%d in your goals list.. 🧐\n", id)
+			return
+		}
+
 		goal := goals[id-1]
 		deleteErr := db.DeleteGoal(goal.Id)
 		if deleteErr != nil {
