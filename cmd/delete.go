@@ -21,7 +21,7 @@ var deleteCmd = &cobra.Command{
 			goalText = arg
 			goalTextEntered = true
 		}
-		
+
 		goals, getGoalsErr := db.GetAllGoals()
 		if getGoalsErr != nil {
 			fmt.Println("Something went wrong:", err)
