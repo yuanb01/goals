@@ -4,7 +4,6 @@ goals is a CLI tool that encourages you to set goals for youself and enables you
 ## ⚡️ Quick start
 
 First, [download](https://golang.org/dl/) and install **Go** if you haven't already.
-> If you're looking for the **Create Go App CLI** for Go `1.16`, you can find it [here](https://github.com/create-go-app/cli/tree/v2).
 
 Installation of `goals` is done by using the [`go install`](https://golang.org/cmd/go/#hdr-Compile_and_install_packages_and_dependencies) command. 
 
