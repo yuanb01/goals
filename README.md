@@ -70,7 +70,7 @@ You have the following goals:
 1. french 3
 
 $ goals delete french
-Deleted goal "french"
+Deleted goal "french" 🗑
 
 $ goals list
 Your goals list is empty! Why not add a goal? 📝 🥅

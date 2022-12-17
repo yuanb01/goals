@@ -42,7 +42,7 @@ var deleteCmd = &cobra.Command{
 			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n📝 Use the 'goals list' command to see your list of goals!\n", goalText)
 			return
 		}
-		if id > len(goals) {
+		if id <= 0 || id > len(goals) {
 			fmt.Printf("Uh oh! Did you make a typo? There is no goal at #%d in your goals list.. 🧐\n📝 Use the 'goals list' command to see your list of goals!\n", id)
 			return
 		}
