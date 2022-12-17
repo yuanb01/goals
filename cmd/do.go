@@ -13,7 +13,7 @@ var doCmd = &cobra.Command{
 	Use:   "do",
 	Short: "Mark a goal on your goals list as complete either by its name or its number in the goals list",
 	Run: func(cmd *cobra.Command, args []string) {
-		var goalText string
+		var goalText string = "nil" // need to set string instead of using its 0-value in order to check line 27
 		arg := strings.Join(args, " ")
 		id, err := strconv.Atoi(arg) // id will be 0 if a string is entered
 		if err != nil {              // referring to goal by string name
@@ -21,10 +21,13 @@ var doCmd = &cobra.Command{
 		}
 		goals, getGoalsErr := db.GetAllGoals()
 		if getGoalsErr != nil {
-			fmt.Println("Something went wrong:", err)
+			fmt.Println("Something went wrong:", getGoalsErr)
 			return
 		}
-		if goalText != "" {
+		if goalText == "" { // means user entered empty string for do
+			fmt.Println("✋ Don't forget to write out what goal you would like to mark as done! \nFor more on how to use the 'do' command, try typing 'goals' in your terminal 😉")
+			return
+		} else {
 			for i, goal := range goals {
 				if goal.Text == goalText {
 					id = i + 1
@@ -32,12 +35,12 @@ var doCmd = &cobra.Command{
 			}
 		}
 
-		if id <= 0 {
-			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n", goalText)
+		if goalText != "nil" && id <= 0 {
+			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n📝 Use the 'goals list' command to see your list of goals!\n", goalText)
 			return
 		}
 		if id > len(goals) {
-			fmt.Printf("Uh oh! Did you make a typo? There is no goal at #%d in your goals list.. 🧐\n", id)
+			fmt.Printf("Uh oh! Did you make a typo? There is no goal at #%d in your goals list.. 🧐\n📝 Use the 'goals list' command to see your list of goals!\n", id)
 			return
 		}
 		goal := goals[id-1]

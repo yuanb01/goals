@@ -40,10 +40,10 @@ Available Commands:
 Use "goals [command] --help" for more information about a command.
 
 $ goals add french 5
-Added "french" to your goals with repeat 5x.
+Added "french" to your goals list with repeat 5x!
 
 $ goals add gym
-Added "gym" to your goals.
+Added "gym" to your goals list!
 
 $ goals list
 You have the following goals:
@@ -51,7 +51,7 @@ You have the following goals:
 2. gym
 
 $ goals do gym
-You have completed the "gym" goal!
+Yay! You have completed your "gym" goal! 🎉
 
 $ goals list
 You have the following goals:

@@ -24,6 +24,23 @@ var addCmd = &cobra.Command{
 			}
 		}
 		goalText := strings.Join(args, " ")
+		goals, getGoalsErr := db.GetAllGoals()
+		if getGoalsErr != nil {
+			fmt.Println("Something went wrong:", getGoalsErr)
+			return
+		}
+		if goalText != "" {
+			for _, goal := range goals {
+				if goal.Text == goalText {
+					fmt.Printf("Whoops! Looks like \"%s\" is already in your goals list!", goalText)
+					return
+				}
+			}
+		} else {
+			fmt.Println("✋ Don't forget to write out what goal you would like to add! \nFor more on how to use the 'add' command, try typing 'goals' in your terminal 😉")
+			return
+		}
+
 		_, createErr := db.CreateGoal(goalText, repeat)
 		if createErr != nil {
 			fmt.Println("Something went wrong:", err)
