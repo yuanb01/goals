@@ -81,6 +81,30 @@ func DeleteGoal(id int) error {
 	})
 }
 
+// edit features of a goal
+func UpdateGoal(id int, goalText string, repeat int) error {
+	err := db.Update(func(tx *bolt.Tx) error {
+		b := tx.Bucket(goalsBucket)
+		goal := &Goal{
+			Id:     id,
+			Text:   goalText,
+			Repeat: repeat,
+		}
+		// Marshal user data into bytes.
+		buf, err := json.Marshal(goal)
+		if err != nil {
+			return err
+		}
+		return b.Put(itob(goal.Id), buf)
+	})
+
+	return err
+	// if err != nil {
+	// 	return -1, err
+	// }
+	// return id, nil
+}
+
 // itob returns an 8-byte big endian representation of v.
 func itob(v int) []byte {
 	b := make([]byte, 8)

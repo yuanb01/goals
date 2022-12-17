@@ -29,7 +29,11 @@ var addCmd = &cobra.Command{
 			fmt.Println("Something went wrong:", err)
 			return
 		}
-		fmt.Printf("Added \"%s\" to your goals list.\n", goalText)
+		if repeat > 1 {
+			fmt.Printf("Added \"%s\" to your goals list with repeat %dx!\n", goalText, repeat)
+		} else {
+			fmt.Printf("Added \"%s\" to your goals list!\n", goalText)
+		}
 	},
 }
 

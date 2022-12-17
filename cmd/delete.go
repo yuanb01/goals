@@ -39,9 +39,9 @@ var deleteCmd = &cobra.Command{
 		goal := goals[id-1]
 		deleteErr := db.DeleteGoal(goal.Id)
 		if deleteErr != nil {
-			fmt.Printf("Failed to mark your goal \"%s\" as completed. Error: %s\n", goal.Text, err)
+			fmt.Printf("Failed to delete your goal \"%s\". Error: %s\n", goal.Text, err)
 		} else {
-			fmt.Printf("Yay! You have completed your goal: \"%s\" \n", goal.Text)
+			fmt.Printf("Deleted goal \"%s\" \n", goal.Text)
 		}
 	},
 }

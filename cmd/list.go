@@ -23,7 +23,12 @@ var listCmd = &cobra.Command{
 		}
 		fmt.Println("You have the following goals:")
 		for i, goal := range goals {
-			fmt.Printf("%d. %s\n", i+1, goal.Text)
+			if goal.Repeat > 1 {
+				fmt.Printf("%d. %s %d\n", i+1, goal.Text, goal.Repeat)
+			} else {
+				fmt.Printf("%d. %s\n", i+1, goal.Text)
+			}
+
 		}
 	},
 }

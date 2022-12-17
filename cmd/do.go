@@ -16,7 +16,7 @@ var doCmd = &cobra.Command{
 		var goalText string
 		arg := strings.Join(args, " ")
 		id, err := strconv.Atoi(arg) // id will be 0 if a string is entered
-		if err != nil { // referring to goal by string name
+		if err != nil {              // referring to goal by string name
 			goalText = arg
 		}
 		goals, getGoalsErr := db.GetAllGoals()
@@ -32,17 +32,31 @@ var doCmd = &cobra.Command{
 			}
 		}
 
-		if id <= 0 || id > len(goals) {
-			fmt.Printf("Uh oh! There is no goal at number %d in your goals list 🧐\n", id)
+		if id <= 0 {
+			fmt.Printf("Uh oh! Did you make a typo? \"%s\" doesn't seem to be in your goals list.. 🧐\n", goalText)
+			return
+		}
+		if id > len(goals) {
+			fmt.Printf("Uh oh! Did you make a typo? There is no goal at #%d in your goals list.. 🧐\n", id)
 			return
 		}
 		goal := goals[id-1]
-		deleteErr := db.DeleteGoal(goal.Id)
-		if deleteErr != nil {
-			fmt.Printf("Failed to mark your goal \"%s\" as completed. Error: %s\n", goal.Text, err)
+		if goal.Repeat <= 1 {
+			deleteErr := db.DeleteGoal(goal.Id)
+			if deleteErr != nil {
+				fmt.Printf("Failed to mark your goal \"%s\" as completed. Error: %s\n", goal.Text, err)
+			} else {
+				fmt.Printf("Yay! You have completed your \"%s\" goal! 🎉\n", goal.Text)
+			}
 		} else {
-			fmt.Printf("Yay! You have completed your goal: \"%s\" \n", goal.Text)
+			updateErr := db.UpdateGoal(goal.Id, goal.Text, goal.Repeat-1)
+			if updateErr != nil {
+				fmt.Printf("Failed to mark your goal \"%s\" as completed. Error: %s\n", goal.Text, err)
+			} else {
+				fmt.Printf("You are making progress towards your \"%s\" goal! You need to do this goal %d more times 🔁\n", goal.Text, goal.Repeat-1)
+			}
 		}
+
 	},
 }
 
