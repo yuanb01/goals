@@ -17,7 +17,7 @@ func main() {
 	err := db.Init(dbPath)
 	if err != nil {
 		// panic(err)
-		fmt.Println(err.Error())
+		fmt.Println("Something went wrong:", err)
 		os.Exit(1)
 	}
 	cmd.RootCmd.Execute()

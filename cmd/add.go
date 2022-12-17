@@ -23,16 +23,13 @@ var addCmd = &cobra.Command{
 				args = args[:len(args)-1] // don't include repeat param in goal text
 			}
 		}
-		goal := Goal{
-			Text:   strings.Join(args, " "), // lets user enter do dishes or "do dishes"
-			Repeat: repeat,
-		}
-		_, createErr := db.CreateGoal(&goal)
+		goalText := strings.Join(args, " ")
+		_, createErr := db.CreateGoal(goalText, repeat)
 		if createErr != nil {
 			fmt.Println("Something went wrong:", err)
 			return
 		}
-		fmt.Printf("Added \"%s\" to your goals list.\n", goal)
+		fmt.Printf("Added \"%s\" to your goals list.\n", goalText)
 	},
 }
 

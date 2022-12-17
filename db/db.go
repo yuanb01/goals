@@ -3,6 +3,7 @@ package db
 import (
 	"encoding/binary"
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/boltdb/bolt"
@@ -29,13 +30,16 @@ func Init(dbPath string) error {
 	})
 }
 
-func CreateGoal(goal *Goal) (int, error) {
+func CreateGoal(goalText string, repeat int) (int, error) {
 	var id int
 	err := db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket(goalsBucket)
 		id, _ := b.NextSequence()
-		goal.Id = int(id)
-
+		goal := &Goal{
+			Id:     int(id),
+			Text:   goalText,
+			Repeat: repeat,
+		}
 		// Marshal user data into bytes.
 		buf, err := json.Marshal(goal)
 		if err != nil {
@@ -56,8 +60,9 @@ func GetAllGoals() ([]Goal, error) {
 		c := b.Cursor()
 		for k, v := c.First(); k != nil; k, v = c.Next() {
 			var goal Goal
-			if err := json.Unmarshal(v, &goal); err != nil {
-				return err
+			err := json.Unmarshal(v, &goal)
+			if err != nil {
+				fmt.Println("error:", err)
 			}
 			goals = append(goals, goal)
 		}
