@@ -9,7 +9,7 @@ import (
 
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "List all of your goals.",
+	Short: "List all of your goals",
 	Run: func(cmd *cobra.Command, args []string) {
 		goals, err := db.GetAllGoals()
 		if err != nil {
@@ -33,5 +33,12 @@ var listCmd = &cobra.Command{
 }
 
 func init() {
+	//disable help command
+	RootCmd.SetHelpCommand(&cobra.Command{
+		Use:    "no-help",
+		Hidden: true,
+	})
+	//disable completion command
+	RootCmd.CompletionOptions.DisableDefaultCmd = true
 	RootCmd.AddCommand(listCmd)
 }

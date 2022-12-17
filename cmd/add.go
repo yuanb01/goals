@@ -11,7 +11,7 @@ import (
 
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "Adds a goal to your goals list.",
+	Short: "Add a new goal to your goals list with optional [repeat] param",
 	Run: func(cmd *cobra.Command, args []string) {
 		var repeat int
 		var err error

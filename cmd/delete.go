@@ -11,7 +11,7 @@ import (
 
 var deleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "Delete a goal from your goals list by its name or its number in the goals list",
+	Short: "Delete a goal from your goals list either by its name or its number in the goals list",
 	Run: func(cmd *cobra.Command, args []string) {
 		var goalText string
 		arg := strings.Join(args, " ")
