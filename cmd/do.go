@@ -26,7 +26,7 @@ var doCmd = &cobra.Command{
 			fmt.Println("Something went wrong:", getGoalsErr)
 			return
 		}
-		if goalText == "" { // means user entered empty string for do
+		if goalTextEntered && goalText == "" { // means user entered empty string for do
 			fmt.Println("✋ Don't forget to write out what goal you would like to mark as done! \nFor more on how to use the 'do' command, try typing 'goals' in your terminal 😉")
 			return
 		} else {

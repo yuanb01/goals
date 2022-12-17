@@ -28,7 +28,7 @@ var deleteCmd = &cobra.Command{
 			return
 		}
 
-		if goalText == "" { // means user entered empty string for do
+		if goalTextEntered && goalText == "" { // means user entered empty string for do
 			fmt.Println("✋ Don't forget to write out what goal you would like to delete! \nFor more on how to use the 'delete' command, try typing 'goals' in your terminal 😉")
 			return
 		} else {
